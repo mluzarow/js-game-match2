@@ -14,6 +14,7 @@ class MatchTwo {
 		this.time = time;
 		this.$gameBoard = document.getElementById ("board-wrap");
 		this.flippedTiles = [];
+		this.timeoutFlag = false;
 		
 		this.images = this.setImages (this.numTiles, imageList);
 		
@@ -101,9 +102,14 @@ class MatchTwo {
 		tile.appendChild (cell);
 		
 		tile.addEventListener ("click", function (game) {
+			if (game.timeoutFlag === true) {
+				return;
+			}
+			
 			if (this.classList.value.indexOf ("flipped") !== -1) {
 				this.classList.remove ("flipped");
 				game.flippedTiles = [];
+				
 				return;
 			} else {
 				this.classList.add ("flipped");
@@ -124,6 +130,8 @@ class MatchTwo {
 				this.classList.add (validClass);
 				
 				game.flippedTiles.push (this);
+				
+				game.timeoutFlag = true;
 				
 				setTimeout (game.handleMatch.bind (game, validClass), 1000);
 			} else {
@@ -155,5 +163,7 @@ class MatchTwo {
 		this.flippedTiles[1].classList.remove ("flipped");
 		
 		this.flippedTiles = [];
+		
+		this.timeoutFlag = false;
 	}
 }
