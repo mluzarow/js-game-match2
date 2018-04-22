@@ -115,15 +115,31 @@ body {
 }
 
 #board-wrap .cell-wrap .cell {
+	position: relative;
 	width: 100%;
 	background-color: red;
 }
 
-#board-wrap .cell-wrap .cell img {
+#board-wrap .cell-wrap .cell .match-flag {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#board-wrap .cell-wrap.correct .cell .match-flag.correct {
+	display: block;
+}
+
+#board-wrap .cell-wrap.incorrect .cell .match-flag.incorrect {
+	display: block;
+}
+
+#board-wrap .cell-wrap .cell .image {
 	width: 100%;
 	visibility: hidden;
 }
 
-#board-wrap .cell-wrap.flipped .cell img {
+#board-wrap .cell-wrap.flipped .cell .image {
 	visibility: visible;
 }

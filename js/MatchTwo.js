@@ -83,6 +83,7 @@ class MatchTwo {
 		
 		var imgTag = document.createElement ("img");
 		imgTag.src = img;
+		imgTag.classList.add ("image");
 		
 		var imgCorrect = document.createElement ("img");
 		imgCorrect.src = "img/correct.png";
