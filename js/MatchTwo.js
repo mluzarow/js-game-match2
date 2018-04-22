@@ -13,6 +13,7 @@ class MatchTwo {
 		this.numTiles = nTiles;
 		this.time = time;
 		this.$gameBoard = document.getElementById ("board-wrap");
+		this.flippedTiles = [];
 		
 		this.images = this.setImages (this.numTiles, imageList);
 		
@@ -86,13 +87,34 @@ class MatchTwo {
 		cell.appendChild (imgTag);
 		tile.appendChild (cell);
 		
-		tile.addEventListener ("click", function () {
+		tile.addEventListener ("click", function (game) {
 			if (this.classList.value.indexOf ("flipped") !== -1) {
 				this.classList.remove ("flipped");
+				game.flippedTiles = [];
+				return;
 			} else {
 				this.classList.add ("flipped");
 			}
-		}.bind (tile));
+			
+			if (game.flippedTiles.length > 0) {
+				// Check for match
+				game.flippedTiles[0].classList.remove ("flipped")
+				this.classList.remove ("flipped");
+				
+				let src0 = game.flippedTiles[0].children[0].children[0].src;
+				let src1 = this.children[0].children[0].src;
+				
+				if (src0 === src1) {
+					// Got it
+					game.flippedTiles[0].classList.add ("matched");
+					this.classList.add ("matched");
+				}
+				
+				game.flippedTiles = [];
+			} else {
+				game.flippedTiles.push (this);
+			}
+		}.bind (tile, this));
 		
 		return (tile);
 	}

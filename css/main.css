@@ -102,6 +102,10 @@ body {
 	cursor: pointer;
 }
 
+#board-wrap .cell-wrap.matched {
+	visibility: hidden;
+}
+
 #board-wrap .cell-wrap:hover .cell {
 	background-color: #ff4141;
 }
