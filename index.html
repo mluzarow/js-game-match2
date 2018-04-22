@@ -4,12 +4,24 @@
 	
 	<link rel = "stylesheet" type = "text/css" href = "css/main.css">
 	
+	<script type = "text/javascript" src = "js/Setup.js"></script>
 	<script type = "text/javascript" src = "js/MatchTwo.js"></script>
 	
 	<script>
 		window.onload = function () {
 			// Loader
-			MatchTwo.initialize ();
+			new Setup (
+				[
+					'img/doujin.jpg',
+					'img/flowers.png',
+					'img/highart.jpg',
+					'img/pizza.jpg',
+					'img/potemayo.jpg',
+					'img/summer.jpg',
+					'img/yuri.jpg',
+					'img/zipzap.png'
+				]
+			);
 		}
 	</script>
 	
