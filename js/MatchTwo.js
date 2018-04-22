@@ -12,6 +12,7 @@ class MatchTwo {
 	constructor (nTiles, time, imageList) {
 		this.numTiles = nTiles;
 		this.time = time;
+		this.$gameBoard = document.getElementById ("board-wrap");
 		
 		this.images = this.setImages (this.numTiles, imageList);
 		
@@ -60,10 +61,8 @@ class MatchTwo {
 	 * @param {array} images    list of shuffled images that pair with each tile
 	 */
 	drawTiles (nTiles, images) {
-		var board = document.getElementById ("board-wrap");
-		
 		for (var i = 0; i < nTiles; i++) {
-			board.appendChild (this.makeTile (images[i]));
+			this.$gameBoard.appendChild (this.makeTile (images[i]));
 		}
 	}
 	
@@ -87,7 +86,7 @@ class MatchTwo {
 		cell.appendChild (imgTag);
 		tile.appendChild (cell);
 		
-		tile.addEventListener ("click", function (e) {
+		tile.addEventListener ("click", function () {
 			if (this.classList.value.indexOf ("flipped") !== -1) {
 				this.classList.remove ("flipped");
 			} else {
