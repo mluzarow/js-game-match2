@@ -84,6 +84,18 @@ class MatchTwo {
 		var imgTag = document.createElement ("img");
 		imgTag.src = img;
 		
+		var imgCorrect = document.createElement ("img");
+		imgCorrect.src = "img/correct.png";
+		imgCorrect.classList.add ("match-flag");
+		imgCorrect.classList.add ("correct");
+		
+		var imgIncorrect = document.createElement ("img");
+		imgIncorrect.src = "img/incorrect.png";
+		imgIncorrect.classList.add ("match-flag");
+		imgIncorrect.classList.add ("incorrect");
+		
+		cell.appendChild (imgCorrect);
+		cell.appendChild (imgIncorrect);
 		cell.appendChild (imgTag);
 		tile.appendChild (cell);
 		
