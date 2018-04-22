@@ -17,11 +17,16 @@ class MatchTwo {
 		this.timeoutFlag = false;
 		this.matchesRemaining = nTiles / 2;
 		this.$bannerWin = document.getElementById ("banner-win");
-		this.$bannerLose = document.getElementById ("banner-win");
+		this.$bannerLose = document.getElementById ("banner-lose");
 		
 		this.images = this.setImages (this.numTiles, imageList);
 		
 		this.drawTiles (this.numTiles, this.images);
+		
+		this.timeTimeout = setTimeout (function () {
+			this.$gameBoard.style.display = "none";
+			this.$bannerLose.style.display = "block";
+		}.bind (this), this.time * 1000);
 	}
 	
 	/**
@@ -171,6 +176,8 @@ class MatchTwo {
 		if (this.matchesRemaining === 0) {
 			this.$gameBoard.style.display = "none";
 			this.$bannerWin.style.display = "block";
+			
+			clearTimeout (this.timeTimeout);
 			
 			return;
 		}
