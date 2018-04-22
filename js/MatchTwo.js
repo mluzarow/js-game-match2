@@ -15,6 +15,9 @@ class MatchTwo {
 		this.$gameBoard = document.getElementById ("board-wrap");
 		this.flippedTiles = [];
 		this.timeoutFlag = false;
+		this.matchesRemaining = nTiles / 2;
+		this.$bannerWin = document.getElementById ("banner-win");
+		this.$bannerLose = document.getElementById ("banner-win");
 		
 		this.images = this.setImages (this.numTiles, imageList);
 		
@@ -122,6 +125,7 @@ class MatchTwo {
 				
 				if (src0 === src1) {
 					var validClass = "correct";
+					game.matchesRemaining--;
 				} else {
 					var validClass = "incorrect";
 				}
@@ -163,6 +167,13 @@ class MatchTwo {
 		this.flippedTiles[1].classList.remove ("flipped");
 		
 		this.flippedTiles = [];
+		
+		if (this.matchesRemaining === 0) {
+			this.$gameBoard.style.display = "none";
+			this.$bannerWin.style.display = "block";
+			
+			return;
+		}
 		
 		this.timeoutFlag = false;
 	}
