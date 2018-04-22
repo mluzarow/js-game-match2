@@ -68,7 +68,7 @@ class Setup {
 		this.$setupWrap.style.display = "none";
 		
 		new MatchTwo (
-			parseInt (this.$inputImages.value),
+			parseInt (this.$inputTiles.value),
 			parseInt (this.$inputTime.value),
 			this.imageList
 		);

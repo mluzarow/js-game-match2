@@ -88,15 +88,12 @@ class MatchTwo {
 		tile.appendChild (cell);
 		
 		tile.addEventListener ("click", function (e) {
-			var self = e.target;
-			
-			console.log (self);
-			if (self.classList.value.indexOf ("flipped") !== -1) {
-				self.classList.remove ("flipped");
+			if (this.classList.value.indexOf ("flipped") !== -1) {
+				this.classList.remove ("flipped");
 			} else {
-				self.classList.add ("flipped");
+				this.classList.add ("flipped");
 			}
-		});
+		}.bind (tile));
 		
 		return (tile);
 	}
