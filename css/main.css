@@ -144,3 +144,38 @@ body {
 #board-wrap .cell-wrap.flipped .cell .image {
 	visibility: visible;
 }
+
+/* -------- Game Over Text -------- */
+.banner {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	color: green;
+	font-family: "Arial";
+	font-size: 22vw;
+}
+
+.banner::before {
+	width: 0;
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	content: '';
+}
+
+.banner span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#banner-win {
+	display: none;
+	color: green;
+}
+
+#banner-lose {
+	display: none;
+	color: red;
+}
