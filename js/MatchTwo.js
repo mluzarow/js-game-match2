@@ -137,7 +137,7 @@ class MatchTwo {
 	/**
 	 * Handles match validation between 2 tiles.
 	 * 
-	 * @param  {string} cssClass CSS validation class
+	 * @param {string} cssClass CSS validation class
 	 */
 	handleMatch (cssClass) {
 		if (cssClass === "correct") {
