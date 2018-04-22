@@ -137,6 +137,11 @@ class MatchTwo {
 		return (tile);
 	}
 	
+	/**
+	 * Handles match validation between 2 tiles.
+	 * 
+	 * @param  {string} cssClass CSS validation class
+	 */
 	handleMatch (cssClass) {
 		if (cssClass === "correct") {
 			this.flippedTiles[0].classList.remove ("correct");
