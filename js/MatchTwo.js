@@ -114,9 +114,6 @@ class MatchTwo {
 				let src0 = game.flippedTiles[0].children[0].children[2].src;
 				let src1 = this.children[0].children[2].src;
 				
-				console.log (src0);
-				console.log (src1);
-				
 				if (src0 === src1) {
 					var validClass = "correct";
 				} else {
