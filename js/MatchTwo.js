@@ -36,7 +36,7 @@ class MatchTwo {
 		}
 		
 		// We have exactly the amount we need; now duplicate the list.
-		imageList.concat (imageList);
+		imageList = imageList.concat (imageList);
 		
 		// Shuffle the images
 		var newImages = [];
