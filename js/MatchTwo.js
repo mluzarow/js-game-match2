@@ -111,24 +111,47 @@ class MatchTwo {
 			
 			if (game.flippedTiles.length > 0) {
 				// Check for match
-				game.flippedTiles[0].classList.remove ("flipped")
-				this.classList.remove ("flipped");
+				let src0 = game.flippedTiles[0].children[0].children[2].src;
+				let src1 = this.children[0].children[2].src;
 				
-				let src0 = game.flippedTiles[0].children[0].children[0].src;
-				let src1 = this.children[0].children[0].src;
+				console.log (src0);
+				console.log (src1);
 				
 				if (src0 === src1) {
-					// Got it
-					game.flippedTiles[0].classList.add ("matched");
-					this.classList.add ("matched");
+					var validClass = "correct";
+				} else {
+					var validClass = "incorrect";
 				}
 				
-				game.flippedTiles = [];
+				game.flippedTiles[0].classList.add (validClass);
+				this.classList.add (validClass);
+				
+				game.flippedTiles.push (this);
+				
+				setTimeout (game.handleMatch.bind (game, validClass), 1000);
 			} else {
 				game.flippedTiles.push (this);
 			}
 		}.bind (tile, this));
 		
 		return (tile);
+	}
+	
+	handleMatch (cssClass) {
+		if (cssClass === "correct") {
+			this.flippedTiles[0].classList.remove ("correct");
+			this.flippedTiles[1].classList.remove ("correct");
+			
+			this.flippedTiles[0].classList.add ("matched");
+			this.flippedTiles[1].classList.add ("matched");
+		} else {
+			this.flippedTiles[0].classList.remove ("incorrect");
+			this.flippedTiles[1].classList.remove ("incorrect");
+		}
+		
+		this.flippedTiles[0].classList.remove ("flipped");
+		this.flippedTiles[1].classList.remove ("flipped");
+		
+		this.flippedTiles = [];
 	}
 }
