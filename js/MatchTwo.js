@@ -1,4 +1,14 @@
+/**
+ * Game controller for the match 2 game.
+ */
 class MatchTwo {
+	/**
+	 * Constructor for class MatchTwo.
+	 * 
+	 * @param {int}   nTiles    number of game tiles
+	 * @param {int}   time      allowed time in seconds
+	 * @param {array} imageList list of usable images
+	 */
 	constructor (nTiles, time, imageList) {
 		this.numTiles = nTiles;
 		this.time = time;
@@ -8,6 +18,13 @@ class MatchTwo {
 		this.drawTiles (this.numTiles, this.images);
 	}
 	
+	/**
+	 * Sets up image source list to have just enough images for the game. Also
+	 * shuffles the images.
+	 * 
+	 * @param {int}   nTiles    number of game tiles
+	 * @param {array} imageList list of usable images
+	 */
 	setImages (nTiles, imageList) {
 		if ((nTiles / 2) > imageList.length) {
 			// Duplication images until we have enough
@@ -36,6 +53,12 @@ class MatchTwo {
 		return (newImages);
 	}
 	
+	/**
+	 * Draws the game board.
+	 * 
+	 * @param {int}   nTiles    number of game tiles
+	 * @param {array} images    list of shuffled images that pair with each tile
+	 */
 	drawTiles (nTiles, images) {
 		var board = document.getElementById ("board-wrap");
 		
@@ -44,6 +67,13 @@ class MatchTwo {
 		}
 	}
 	
+	/**
+	 * Makes tile elements for each tile of the game board.
+	 * 
+	 * @param  {string} img image source attribute
+	 * 
+	 * @return {element} tile HTML element with bound click event
+	 */
 	makeTile (img) {
 		var tile = document.createElement ("div");
 		tile.classList.add ("cell-wrap");

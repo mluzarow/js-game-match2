@@ -1,4 +1,13 @@
+/**
+ * Pre-game setup class for setting up game variables according to user preference
+ * and loading in usable images.
+ */
 class Setup {
+	/**
+	 * Constructor for class Setup.
+	 * 
+	 * @param {array} imageList list of usable images
+	 */
 	constructor (imageList) {
 		this.imageList = imageList;
 		
@@ -23,6 +32,9 @@ class Setup {
 		this.$startBtn.addEventListener("click", this.startButtonClick.bind (this));
 	}
 	
+	/**
+	 * Game start button click event.
+	 */
 	startButtonClick () {
 		var flagImages = this.inputValidation.test(this.$inputImages.value);
 		var flagTiles = this.inputValidation.test(this.$inputTiles.value);
@@ -49,6 +61,9 @@ class Setup {
 		}
 	}
 	
+	/**
+	 * Hands off control to the MatchTwo game controller.
+	 */
 	loadGame () {
 		this.$setupWrap.style.display = "none";
 		
