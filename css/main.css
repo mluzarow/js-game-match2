@@ -96,7 +96,6 @@ body {
 /* -------- Game board -------- */
 #board-wrap .cell-wrap {
 	padding: 15px;
-	width: 25%;
 	display: inline-block;
 	box-sizing: border-box;
 	cursor: pointer;
@@ -178,4 +177,23 @@ body {
 #banner-lose {
 	display: none;
 	color: red;
+}
+
+@media screen and (max-width: 500px) {
+	#setup-popup {
+		width: 100%;
+		border-right: none;
+		border-left: none;
+		border-radius: 0;
+	}
+	
+	#setup-popup .choice-wrap .choice-text,
+	#setup-popup .choice-wrap .choice-input_wrap {
+		width: 100%;
+		display: block;
+	}
+	
+	#board-wrap .cell-wrap {
+		padding: 5px;
+	}
 }
