@@ -21,7 +21,9 @@ class MatchTwo {
 		
 		this.images = this.setImages (this.numTiles, imageList);
 		
-		this.drawTiles (this.numTiles, this.images);
+		let tileWidth = this.calcTileWidth(this.numTiles);
+		
+		this.drawTiles (this.numTiles, this.images, tileWidth);
 		
 		this.timeTimeout = setTimeout (function () {
 			this.$gameBoard.style.display = "none";
@@ -65,15 +67,49 @@ class MatchTwo {
 	}
 	
 	/**
+	 * Calculates tile width percent so that they fit nicely on the page.
+	 * 
+	 * @param  {int} nTiles total tiles being used
+	 * 
+	 * @return {int} width % for each tile
+	 */
+	calcTileWidth (nTiles) {
+		var viewportHeight = window.outerHeight;
+		
+		for (var i = 2; i <= nTiles; i++) {
+			if (nTiles % i === 0) {
+				// Number of tiles vertically
+				var vertTiles = nTiles / i;
+				// Pixel height of stacked vertical tiles
+				var heightTiles = vertTiles * (window.outerWidth / i);
+				
+				if (heightTiles <= viewportHeight) {
+					return (100 / i);
+				}
+			}
+		}
+		
+		return (25);
+	}
+	
+	/**
 	 * Draws the game board.
 	 * 
 	 * @param {int}   nTiles    number of game tiles
 	 * @param {array} images    list of shuffled images that pair with each tile
+	 * @param {int}   tileWidth width % of each tile
 	 */
-	drawTiles (nTiles, images) {
+	drawTiles (nTiles, images, tileWidth) {
 		for (var i = 0; i < nTiles; i++) {
 			this.$gameBoard.appendChild (this.makeTile (images[i]));
 		}
+		
+		var widthSelector = document.createElement ("style");
+		widthSelector.type = "text/css";
+		widthSelector.innerHTML =
+			"#board-wrap .cell-wrap { width: " + tileWidth + "%; }";
+		
+		this.$gameBoard.appendChild (widthSelector);
 	}
 	
 	/**
